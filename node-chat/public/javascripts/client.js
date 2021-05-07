@@ -1,10 +1,22 @@
 const socket = io();
 
-socket.on('message', message =>{
-    console.log(message);
-})
+//room status
+socket.on('status', data => {
+    console.log(data);
+});
+
+//incoming message listener
+socket.on('message', data => {
+    console.log(data);
+});
 
 
-function doSomething(){
-    console.log('hey');
+//form listener
+const sub = document.getElementById('send');
+sub.onclick = function () {
+    const msg = document.getElementById('newmsg').value;
+    console.log('send debug');
+    socket.emit('message', { 'username': 'tempusername', 'msg': msg });
 }
+
+

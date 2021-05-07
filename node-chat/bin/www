@@ -24,12 +24,19 @@ var server = http.createServer(app);
 var io = socketio(server);
 io.on('connection', socket => {
   console.log('<< New connection >>');
+  //welcome msgs
+  socket.emit('status', 'Welcome to the room!');
+  socket.broadcast.emit('status', 'A new user has joined!');
 
-  socket.emit('message', 'Welcome to the room!');
-  socket.broadcast.emit('message', 'A new user has joined!');
+  //user sent a msg
+  socket.on('message', data => {
+    console.log(data);
+    socket.broadcast.emit('message', data);
+  })
 
+  //user disconnects
   socket.on('disconnect', () => {
-    io.emit('message', 'Someone left the room...');
+    io.emit('status', 'Someone left the room...');
   });
 });
 

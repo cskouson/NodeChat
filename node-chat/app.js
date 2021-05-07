@@ -1,3 +1,10 @@
+/**
+ * app.js
+ * Description: simple node.js chatroom app using socket.io and express
+ * 
+ * @author Clint Skouson
+ */
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -6,7 +13,7 @@ var logger = require('morgan');
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var roomRouter = require('./routes/roomRT');
 
 var app = express();
 
@@ -23,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/room', roomRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
