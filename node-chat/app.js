@@ -5,23 +5,25 @@
  * @author Clint Skouson
  */
 
+//libs
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-
+//route vars
 var indexRouter = require('./routes/index');
 var roomRouter = require('./routes/roomRT');
 
+//express init
 var app = express();
 
-
-// view engine setup
+// view engine setup - Not currently needed
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+//middleware setup
 app.use(logger('dev'));
 //app.use(express.static('public'));
 app.use(express.json());
@@ -29,6 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//set routes
 app.use('/', indexRouter);
 app.use('/room', roomRouter);
 

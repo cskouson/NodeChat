@@ -14,15 +14,17 @@
         <div class="row min-vh-75" style="height: 80%;">
             <div class="col-3 mx-2 border border-1 border-light rounded">
                 <h5 style="text-align: center;">Users</h5>
-                <div class="rounded" id="users"
-                    style="text-align: left; overflow: auto; background-color:black; height: 95%"></div>
+                <div class="rounded text-success" id="users"
+                    style="text-align: left; overflow: auto; background-color:black; height: 93%"></div>
             </div>
-            <div class="col-8 border border-1 border-light rounded">
+            <div class="col-8 border border-1 border-light rounded fs-6">
                 <h5 style="text-align: center;">Chat</h5>
-                <div class="rounded" id="msgs"
-                    style="text-align: left; overflow: auto; background-color:black; height: 85%"></div><br>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="newmsg" size="100">
+                <!--
+                <div class="rounded p-1" id="main-board"
+                    style="text-align: left; overflow: scroll; background-color:black; height: 85%;"></div><br> -->
+                <textarea class="rounded text-success" id="main-board" rows="22" style="width: 100%; background-color: black;" readonly></textarea>
+                <div class="input-group">
+                    <input type="text" class="form-control text-success" id="newmsg" size="100" style="background-color: black;">
                     <button type="button" class="btn btn-outline-secondary" id="send">Send</button>
                 </div>
             </div>
