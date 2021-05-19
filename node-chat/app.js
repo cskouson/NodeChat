@@ -1,6 +1,6 @@
 /**
  * app.js
- * Description: simple node.js chatroom app using socket.io and express
+ * Description: This file sets up the Express.js portion of the server.
  * 
  * @author Clint Skouson
  */
