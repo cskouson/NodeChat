@@ -1,15 +1,11 @@
-
+/**
+ * comms.js
+ * Description: this file will handle socket.io and mongodb communication
+ */
 
 //mongodb communications
 const mongoose = require('mongoose');
 require('dotenv').config({path: __dirname+'/../config.env'});
-
-//user schema
-const userSchema = mongoose.Schema({
-    username: String,
-    password: String
-});
-
 
 //db connect
 const connectDB = async () => {
@@ -19,7 +15,7 @@ const connectDB = async () => {
             useUnifiedTopology: true,
             useFindAndModify: false
         });
-
+        
         console.log(`MongoDB Connected: ${conn.connection.host}`);
 
     } catch (err){
