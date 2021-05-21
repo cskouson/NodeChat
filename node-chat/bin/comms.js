@@ -2,11 +2,19 @@
 
 //mongodb communications
 const mongoose = require('mongoose');
+require('dotenv').config({path: __dirname+'/../config.env'});
 
+//user schema
+const userSchema = mongoose.Schema({
+    username: String,
+    password: String
+});
+
+
+//db connect
 const connectDB = async () => {
     try{
-        const uri = 'mongodb+srv://cskouson:Sixpaths666@cluster0.usyhu.mongodb.net/nodechatusers?retryWrites=true&w=majority'
-        const conn = await mongoose.connect(uri, {
+        const conn = await mongoose.connect(process.env.DB_CONNECT, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false
@@ -19,7 +27,6 @@ const connectDB = async () => {
         process.exit(1);
     }
 }
-
 connectDB();
 
 //socket.io controller/handler
@@ -40,6 +47,6 @@ module.exports = function (io) {
         socket.on('disconnect', () => {
             io.emit('status', 'Someone left the room!');
         });
-    });//end socket.io controller ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-}
+    });
+}//end socket.io controller ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
