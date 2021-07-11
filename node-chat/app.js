@@ -2,7 +2,7 @@
  * app.js
  * Description: This file sets up the Express.js portion of the server.
  * 
- * @author Clint Skouson
+ * @author CJS
  */
 
 //libs

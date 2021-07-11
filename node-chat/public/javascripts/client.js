@@ -1,3 +1,7 @@
+/**
+ * 
+ */
+
 const socket = io();
 
 //room status
